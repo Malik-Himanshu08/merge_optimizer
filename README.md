@@ -133,7 +133,6 @@ Because the table grows with the product of the two file lengths, the program sl
 - **Hardcoded Windows paths in `lcs.py`.** The test block at the bottom uses paths with backslashes, such as `merge_optimizer\\samples\\...`. These will not work on Linux or macOS. Replace them with `os.path.join` calls, like the ones used in other files.
 - **Sample folder is required for some scripts.** `diff.py`, `merge.py`, and `gui.py` look for a `samples/` folder next to the code. If it is missing, the GUI shows an empty sample list.
 - **`diff.py` test block does nothing useful.** The code that prints the hunks is commented out, so running the file directly prints nothing.
-- **Unused import in `merge.py`.** `os` is imported but not used. This is harmless.
 - **Memory usage is high for large files.** The LCS table is stored in full. For files with tens of thousands of lines, a more memory-efficient method would be needed.
 - **Conflict markers can clash with real content.** If a file already contains a line that matches a marker exactly, the GUI may read it as a conflict boundary when it loads the merged output.
 - **Benchmark measures only part of the work.** `peak_memory_kb` measures only the LCS table, not the full merge. The time measurement covers the whole merge.
